@@ -51,8 +51,10 @@ require("lazy").setup({
 	-- fuzzy finding w/ telescope
 	{ "nvim-telescope/telescope.nvim", branch = "0.1.x", dependencies = { { "nvim-lua/plenary.nvim" } } },
 	-- fzf extension for telescope
-	-- { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
-
+	{
+		"nvim-telescope/telescope-fzf-native.nvim",
+		build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
+	},
 	-- snippets
 	"L3MON4D3/LuaSnip", -- snippet engine
 	"saadparwaiz1/cmp_luasnip", -- for autocompletion
@@ -105,10 +107,10 @@ require("lazy").setup({
 			local ts_update = require("nvim-treesitter.install").update({ with_sync = true })
 			ts_update()
 		end,
-    dependencies = {
-      "nvim-treesitter/nvim-treesitter-textobjects",
-      "windwp/nvim-ts-autotag",
-    }
+		dependencies = {
+			"nvim-treesitter/nvim-treesitter-textobjects",
+			"windwp/nvim-ts-autotag",
+		},
 	},
 
 	"nvim-treesitter/playground", -- for plugin dev using Treesitter
