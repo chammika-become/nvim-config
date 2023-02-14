@@ -29,6 +29,9 @@ keymap.set("n", "<leader>q", "<cmd>q<cr>")
 keymap.set("n", "<leader>w", "<cmd>w<cr>")
 keymap.set("n", "<leader>x", "<cmd>x<cr>")
 
+-- helix goto end of buffer
+keymap.set("n", "ge", "GG")
+
 -- window management
 -- splits
 -- keymap.set("n", "<leader>t\\", "<C-w>v") -- split window vertically (jp kb)

@@ -21,6 +21,8 @@ lspkind.init({
 	preset = "codicons",
 })
 
+local ts_utils = require("nvim-treesitter.ts_utils")
+
 -- load vs-code like snippets from plugins (e.g. friendly-snippets)
 require("luasnip/loaders/from_vscode").lazy_load()
 
@@ -76,9 +78,25 @@ cmp.setup({
 			"s",
 		}),
 	}),
+
 	-- sources for autocompletion
 	sources = cmp.config.sources({
-		{ name = "nvim_lsp" }, -- lsp
+		-- lsp
+		{
+			name = "nvim_lsp",
+			entry_filter = function(entry, _)
+				local kind = entry:get_kind()
+				local node = ts_utils.get_node_at_cursor():type()
+				if node == "arguments" then
+					if kind == 6 then -- variables
+						return true
+					else
+						return false
+					end
+				end
+				return true
+			end,
+		},
 		{ name = "nvim_lsp_signature_help" }, -- function signatures
 		{ name = "luasnip" }, -- snippets
 		--		{ name = "buffer" }, -- text within current buffer
