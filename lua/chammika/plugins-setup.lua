@@ -26,19 +26,25 @@ require("lazy").setup({
 	"christoomey/vim-tmux-navigator", -- tmux & split window navigation
 	"max397574/better-escape.nvim", -- faster insert mode escape
 	"szw/vim-maximizer", -- maximizes and restores current window
-	"lukas-reineke/indent-blankline.nvim", -- ident lines
+	"lukas-reineke/indent-blankline.nvim", -- show vertical indent guides
 	"numToStr/FTerm.nvim", -- Terminal in Lua
 	"folke/trouble.nvim", -- Summarizes issues
 	{
 		"phaazon/hop.nvim", -- easymotion port to neovim (lua)
 		branch = "v2",
 	},
-	"tpope/vim-surround", -- add, delete, change surroundings (it's awesome)
-	"inkarkat/vim-ReplaceWithRegister", -- replace with register contents using motion (gr + motion)
-
-	"numToStr/Comment.nvim", -- commenting with gc
-
 	"nvim-tree/nvim-tree.lua", -- file explorer
+
+	{
+		"kylechui/nvim-surround",
+		branch = "*", -- Use for stability; omit to use `main` branch for the latest features
+		config = function()
+			require("nvim-surround").setup({})
+		end,
+	},
+	-- chammika mannakkara
+	"numToStr/Comment.nvim", -- commenting with gc
+	"inkarkat/vim-ReplaceWithRegister", -- replace with register contents using motion (gr + motion)
 
 	-- vs-code like icons
 	"nvim-tree/nvim-web-devicons",

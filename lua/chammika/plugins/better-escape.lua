@@ -1,4 +1,4 @@
-local status, escape = pcall(require, "better-escape")
+local status, escape = pcall(require, "better_escape")
 if not status then
 	return
 end

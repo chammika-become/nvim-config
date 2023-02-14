@@ -27,8 +27,8 @@ opt.cursorline = true
 opt.laststatus = 3
 
 -- decrease updatetime for snappier performance (can lead to glitches)
-opt.updatetime = 300
-opt.timeoutlen = 500
+opt.updatetime = 200
+opt.timeoutlen = 300
 
 -- visible separators for panes
 vim.cmd([[highlight winSeperator guifg=gray]])
