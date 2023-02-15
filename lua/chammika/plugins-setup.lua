@@ -33,18 +33,28 @@ require("lazy").setup({
 		"phaazon/hop.nvim", -- easymotion port to neovim (lua)
 		branch = "v2",
 	},
-	"nvim-tree/nvim-tree.lua", -- file explorer
 
 	{
+		"nvim-tree/nvim-tree.lua",
+		requires = {
+			"nvim-tree/nvim-web-devicons", -- optional, for file icons
+		},
+		tag = "nightly",
+	},
+	{
 		"kylechui/nvim-surround",
-		branch = "*", -- Use for stability; omit to use `main` branch for the latest features
+		branch = "*",
 		config = function()
 			require("nvim-surround").setup({})
 		end,
 	},
-	-- chammika mannakkara
-	"numToStr/Comment.nvim", -- commenting with gc
-	"inkarkat/vim-ReplaceWithRegister", -- replace with register contents using motion (gr + motion)
+
+	{
+		"numToStr/Comment.nvim",
+		config = function()
+			require("Comment").setup()
+		end,
+	},
 
 	-- vs-code like icons
 	"nvim-tree/nvim-web-devicons",
@@ -115,13 +125,11 @@ require("lazy").setup({
 		end,
 		dependencies = {
 			"nvim-treesitter/nvim-treesitter-textobjects",
-			"windwp/nvim-ts-autotag",
+			"nvim-treesitter/playground", -- for plugin dev using Treesitter
+			"HiPhish/nvim-ts-rainbow2",
 		},
 	},
 
-	"nvim-treesitter/playground", -- for plugin dev using Treesitter
-
-	-- auto closing
 	"windwp/nvim-autopairs", -- autoclose parens, brackets, quotes, etc...
 
 	-- git integration

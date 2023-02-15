@@ -36,18 +36,6 @@ nvim_tree.setup({
 		root_folder_modifier = ":t",
 		icons = {
 			glyphs = {
-				default = "",
-				symlink = "",
-				folder = {
-					arrow_closed = "", -- arrow when folder is closed
-					arrow_open = "", -- arrow when folder is open
-					default = "",
-					open = "",
-					empty = "",
-					empty_open = "",
-					symlink = "",
-					symlink_open = "",
-				},
 				git = {
 					unstaged = "",
 					staged = "S",

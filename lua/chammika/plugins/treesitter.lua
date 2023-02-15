@@ -1,11 +1,11 @@
 -- import nvim-treesitter plugin safely
-local status, treesitter = pcall(require, "nvim-treesitter.configs")
+local status, ts_config = pcall(require, "nvim-treesitter.configs")
 if not status then
 	return
 end
 
 -- configure treesitter
-treesitter.setup({
+ts_config.setup({
 	-- enable syntax highlighting
 	highlight = {
 		enable = true,
@@ -40,10 +40,10 @@ treesitter.setup({
 	incremental_selection = {
 		enable = true,
 		keymaps = {
-			init_selection = "<c-space>",
-			node_incremental = "<c-space>",
-			scope_incremental = "<c-s>",
-			node_decremental = "<c-backspace>",
+			init_selection = "gnn",
+			node_incremental = "grn",
+			scope_incremental = "grc",
+			node_decremental = "grm",
 		},
 	},
 	textobjects = {
@@ -89,6 +89,19 @@ treesitter.setup({
 				["<leader>A"] = "@parameter.inner",
 			},
 		},
+	},
+
+	--nvim-ts-rainbow2
+	rainbow = {
+		enable = true,
+		-- list of languages you want to disable the plugin for
+		disable = { "jsx" },
+		-- Which query to use for finding delimiters
+		query = "rainbow-parens",
+		-- Highlight the entire buffer all at once
+		strategy = require("ts-rainbow.strategy.global"),
+		-- Do not enable for files with more than n lines
+		max_file_lines = 3000,
 	},
 
 	-- treesitter playground settings
